@@ -1,2 +1,96 @@
-<h1>Videos#show</h1>
-<p>Find me in app/views/videos/show.html.erb</p>
+<div class="container" data-controller="video-notes">
+  <div class="row mt-4">
+    <div class="col">
+      <%= link_to "← Back to Library", root_path, class: "text-decoration-none text-muted" %>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-lg-8">
+      <%# Video Player Section %>
+      <div class="video-section mb-4">
+        <h1 class="mb-3"><%= @video.title %></h1>
+        
+        <%# Mux Video Player %>
+        <div class="video-player-wrapper mb-3">
+          <mux-player
+            data-video-notes-target="player"
+            playback-id="<%= @video.mux_playback_id %>"
+            metadata-video-title="<%= @video.title %>"
+            accent-color="#1a1a1a"
+            style="width: 100%; height: 100%; position: absolute; top: 0; left: 0;"
+          ></mux-player>
+        </div>
+        
+        <% if @video.description.present? %>
+          <div class="description mb-4">
+            <h5>About this video</h5>
+            <p class="text-muted"><%= @video.description %></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <%# Notes Section %>
+      <div class="notes-panel">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h4 class="mb-0">My Notes</h4>
+          <span class="badge bg-secondary"><%= @notes.count %></span>
+        </div>
+
+        <%# New Note Form %>
+        <%= turbo_frame_tag "new_note" do %>
+          <div class="card mb-4 border-0 bg-light">
+            <div class="card-body">
+              <%= form_with model: [@video, @note], data: { 
+                controller: "video-notes",
+                action: "submit->video-notes#captureTimestamp"
+              } do |f| %>
+                <%= f.hidden_field :timestamp, data: { video_notes_target: "timestampInput" } %>
+                
+                <div class="mb-3">
+                  <%= f.text_area :content, 
+                    class: "form-control", 
+                    placeholder: "Add a note at the current timestamp...", 
+                    rows: 3,
+                    required: true %>
+                </div>
+                
+                <div class="d-flex justify-content-between align-items-center">
+                  <small class="text-muted">
+                    <i class="bi bi-clock"></i>
+                    <span data-video-notes-target="currentTime">00:00:00</span>
+                  </small>
+                  <%= f.submit "Add Note", class: "btn btn-primary btn-sm" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+
+        <%# Notes List %>
+        <%= turbo_frame_tag "notes_list" do %>
+          <div class="notes-section">
+            <% if @notes.any? %>
+              <div id="notes">
+                <%= render @notes %>
+              </div>
+            <% else %>
+              <div class="text-center py-5 text-muted">
+                <i class="bi bi-journal-text" style="font-size: 2rem;"></i>
+                <p class="mt-2 mb-0">No notes yet</p>
+                <small>Add your first note while watching the video</small>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# Include Mux Player from CDN %>
+<%= content_for :head do %>
+  <script src="https://cdn.jsdelivr.net/npm/@mux/mux-player"></script>
+<% end %>
