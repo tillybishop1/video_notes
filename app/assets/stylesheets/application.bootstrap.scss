@@ -1,2 +1,158 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
+
+// Custom CreateAcademy-inspired styles
+:root {
+  --ca-primary: #1a1a1a;
+  --ca-secondary: #f8f8f8;
+  --ca-accent: #2d5f3f;
+  --ca-text: #333;
+  --ca-text-light: #666;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  color: var(--ca-text);
+  background-color: #fff;
+}
+
+// Header/Navbar styling
+.navbar-brand {
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: var(--ca-primary) !important;
+  letter-spacing: -0.5px;
+}
+
+// Card styling for videos
+.video-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: none;
+  border-radius: 0;
+  overflow: hidden;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15) !important;
+  }
+  
+  .card-img-wrapper {
+    position: relative;
+    padding-top: 66.67%; // 3:2 aspect ratio
+    overflow: hidden;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    
+    .card-img-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.3);
+      
+      .play-icon {
+        font-size: 3rem;
+        color: white;
+        opacity: 0.9;
+      }
+    }
+  }
+  
+  .card-body {
+    padding: 1.5rem;
+  }
+  
+  .card-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--ca-primary);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+  
+  .card-text {
+    font-size: 0.9rem;
+    color: var(--ca-text-light);
+    line-height: 1.6;
+  }
+}
+
+// Button styling
+.btn-primary {
+  background-color: var(--ca-primary);
+  border-color: var(--ca-primary);
+  border-radius: 0;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background-color: #000;
+    border-color: #000;
+    transform: translateY(-2px);
+  }
+}
+
+.btn-outline-secondary {
+  border-radius: 0;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  font-size: 0.85rem;
+}
+
+// Page header
+.page-header {
+  padding: 3rem 0 2rem;
+  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 3rem;
+  
+  h1 {
+    font-weight: 600;
+    font-size: 2.5rem;
+    color: var(--ca-primary);
+    margin-bottom: 0;
+    letter-spacing: -1px;
+  }
+}
+
+// Notes section styling
+.notes-section {
+  .note-item {
+    border-left: 3px solid var(--ca-accent);
+    padding: 1rem 1.5rem;
+    margin-bottom: 1rem;
+    background: var(--ca-secondary);
+    transition: all 0.2s ease;
+    
+    &:hover {
+      background: #f0f0f0;
+      border-left-color: var(--ca-primary);
+    }
+    
+    .timestamp {
+      font-weight: 600;
+      color: var(--ca-accent);
+      cursor: pointer;
+      font-size: 0.9rem;
+      
+      &:hover {
+        color: var(--ca-primary);
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+// Video player wrapper
+.video-player-wrapper {
+  position: relative;
+  padding-top: 56.25%; // 16:9 aspect ratio
+  background: #000;
+  margin-bottom: 2rem;
+}
