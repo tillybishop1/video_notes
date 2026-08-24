@@ -1,4 +1,6 @@
 class NotesController < ApplicationController
+  include ActionView::RecordIdentifier
+
   before_action :authenticate_user!
   before_action :set_video
   before_action :set_note, only: [:destroy]
