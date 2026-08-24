@@ -3,45 +3,115 @@
 
 // Custom CreateAcademy-inspired styles
 :root {
-  --ca-primary: #1a1a1a;
-  --ca-secondary: #f8f8f8;
-  --ca-accent: #2d5f3f;
-  --ca-text: #333;
-  --ca-text-light: #666;
+  --ca-navy: #12182b;
+  --ca-primary: #12182b;
+  --ca-gold: #a9762f;
+  --ca-gold-dark: #8f6427;
+  --ca-secondary: #f7f6f3;
+  --ca-text: #2b2b2b;
+  --ca-text-light: #6b6b6b;
+  --ca-accent: #a9762f;
 }
 
+$ca-font-serif: 'Playfair Display', Georgia, serif;
+$ca-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: $ca-font-sans;
   color: var(--ca-text);
   background-color: #fff;
 }
 
+h1, h2, h3, .card-title {
+  font-family: $ca-font-serif;
+}
+
 // Header/Navbar styling
-.navbar-brand {
+.ca-navbar {
+  background-color: var(--ca-navy) !important;
+  padding: 1rem 0;
+}
+
+.ca-brand {
+  font-family: $ca-font-serif;
   font-weight: 600;
   font-size: 1.5rem;
-  color: var(--ca-primary) !important;
-  letter-spacing: -0.5px;
+  color: #fff !important;
+  letter-spacing: 0.5px;
+}
+
+.ca-nav-link {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+.ca-nav-user {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.85rem;
+  margin-right: 1rem;
+}
+
+.ca-btn-gold {
+  background-color: var(--ca-gold);
+  border-color: var(--ca-gold);
+  color: #fff;
+  border-radius: 4px;
+  padding: 0.55rem 1.4rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: var(--ca-gold-dark);
+    border-color: var(--ca-gold-dark);
+    color: #fff;
+  }
+}
+
+.ca-btn-outline {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #fff;
+  background: transparent;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  padding: 0.4rem 1rem;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+  }
 }
 
 // Card styling for videos
 .video-card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
   border: none;
-  border-radius: 0;
+  border-radius: 8px;
   overflow: hidden;
-  
+
   &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15) !important;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.12) !important;
   }
-  
+
   .card-img-wrapper {
     position: relative;
     padding-top: 66.67%; // 3:2 aspect ratio
     overflow: hidden;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    
+    background-color: #e9e6e0;
+    background-size: cover;
+    background-position: center;
+
     .card-img-overlay {
       position: absolute;
       top: 0;
@@ -51,28 +121,42 @@ body {
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(0,0,0,0.3);
-      
+      background: rgba(0,0,0,0.25);
+
       .play-icon {
         font-size: 3rem;
         color: white;
         opacity: 0.9;
       }
     }
+
+    .ca-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: #fff;
+      color: var(--ca-navy);
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+    }
   }
-  
+
   .card-body {
     padding: 1.5rem;
   }
-  
+
   .card-title {
     font-weight: 600;
-    font-size: 1.1rem;
-    color: var(--ca-primary);
+    font-size: 1.15rem;
+    color: var(--ca-navy);
     margin-bottom: 0.5rem;
     line-height: 1.3;
   }
-  
+
   .card-text {
     font-size: 0.9rem;
     color: var(--ca-text-light);
@@ -82,16 +166,16 @@ body {
 
 // Button styling
 .btn-primary {
-  background-color: var(--ca-primary);
-  border-color: var(--ca-primary);
-  border-radius: 0;
+  background-color: var(--ca-navy);
+  border-color: var(--ca-navy);
+  border-radius: 4px;
   padding: 0.75rem 1.5rem;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   font-size: 0.85rem;
   transition: all 0.3s ease;
-  
+
   &:hover {
     background-color: #000;
     border-color: #000;
@@ -100,7 +184,7 @@ body {
 }
 
 .btn-outline-secondary {
-  border-radius: 0;
+  border-radius: 4px;
   padding: 0.5rem 1rem;
   font-weight: 500;
   font-size: 0.85rem;
@@ -108,16 +192,24 @@ body {
 
 // Page header
 .page-header {
-  padding: 3rem 0 2rem;
-  border-bottom: 1px solid #e5e5e5;
+  padding: 4rem 0 3rem;
+  border-bottom: 1px solid #e8e6e1;
   margin-bottom: 3rem;
-  
+  text-align: center;
+
   h1 {
+    font-family: $ca-font-serif;
     font-weight: 600;
-    font-size: 2.5rem;
-    color: var(--ca-primary);
-    margin-bottom: 0;
-    letter-spacing: -1px;
+    font-size: 2.75rem;
+    color: var(--ca-navy);
+    margin-bottom: 1rem;
+  }
+
+  .lead {
+    color: var(--ca-text-light);
+    font-size: 1.05rem;
+    max-width: 560px;
+    margin: 0 auto 1.75rem;
   }
 }
 

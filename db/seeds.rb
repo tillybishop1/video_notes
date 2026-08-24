@@ -28,25 +28,27 @@ user2 = User.create!(
 puts "Creating videos..."
 
 video1 = Video.create!(
-  title: "Big Buck Bunny",
-  description: "A large and lovable rabbit deals with three tiny bullies, led by a flying squirrel, who are determined to squelch his happiness.",
-  mux_playback_id: "EcHgOK9coz5K4rjSwOkoE7Y7O01201YMIC200RI6lNxnhs",
+  title: "Designing with Salvaged and Reclaimed Materials",
+  description: "
+          In her first ever course acclaimed interior designer and founder of renowned architectural salvage and design firm Retrouvius, Maria Speake shares her philosophy of reuse and shows how to bring warmth, character, and sustainability to any home.",
+  mux_playback_id: "rR8P8mSaKDzz02TsftugTUdI00cQPJX00oy",
   duration: 596
 )
 
 video2 = Video.create!(
-  title: "Tears of Steel",
-  description: "A group of warriors and scientists battle to protect their city's future in this sci-fi short film.",
+  title: "Learn the Magic of Decorating",
+  description: "Discover the secret to creating magical, personal, and timeless interiors with celebrated American designer Michael S. Smith.",
   mux_playback_id: "qxb01i6T202018GFS02vp9RIe01icTcDCjVzQpmaB00CUisJ4",
   duration: 734
 )
 
 video3 = Video.create!(
-  title: "Sample Demo Video",
-  description: "A sample video for testing the video notes feature. This demonstrates how the application works.",
+  title: "The Art of Paper Lampshade Making",
+  description: "Fill your home with artful handmade lampshades using Rosi de Ruig's practical techniques.",
   mux_playback_id: "ER01HKs502EEHGPwnSyJYxj00n7sLy3j18J25CQuVRXtbE",
   duration: 120
 )
+
 
 puts "✅ Created #{User.count} users"
 puts "✅ Created #{Video.count} videos"
