@@ -1,0 +1,33 @@
+<%= turbo_frame_tag "new_note" do %>
+  <div class="card mb-4 border-0 bg-light">
+    <div class="card-body">
+      <%= form_with model: [video, note], data: { 
+        controller: "video-notes",
+        action: "submit->video-notes#captureTimestamp"
+      } do |f| %>
+        <%= f.hidden_field :timestamp, data: { video_notes_target: "timestampInput" } %>
+        
+        <div class="mb-3">
+          <%= f.text_area :content, 
+            class: "form-control #{'is-invalid' if note.errors[:content].any?}", 
+            placeholder: "Add a note at the current timestamp...", 
+            rows: 3,
+            required: true %>
+          <% if note.errors[:content].any? %>
+            <div class="invalid-feedback">
+              <%= note.errors[:content].first %>
+            </div>
+          <% end %>
+        </div>
+        
+        <div class="d-flex justify-content-between align-items-center">
+          <small class="text-muted">
+            <i class="bi bi-clock"></i>
+            <span data-video-notes-target="currentTime">00:00:00</span>
+          </small>
+          <%= f.submit "Add Note", class: "btn btn-primary btn-sm" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
