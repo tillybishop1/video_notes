@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_08_24_111214) do
+ActiveRecord::Schema[8.0].define(version: 2026_08_24_113211) do
   create_table "notes", force: :cascade do |t|
     t.text "content"
     t.integer "timestamp"
@@ -39,13 +39,10 @@ ActiveRecord::Schema[8.0].define(version: 2026_08_24_111214) do
     t.text "description"
     t.string "mux_playback_id"
     t.integer "duration"
-    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_videos_on_user_id"
   end
 
   add_foreign_key "notes", "users"
   add_foreign_key "notes", "videos"
-  add_foreign_key "videos", "users"
 end
