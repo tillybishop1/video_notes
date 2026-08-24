@@ -44,7 +44,6 @@
           <div class="card mb-4 border-0 bg-light">
             <div class="card-body">
               <%= form_with model: [@video, @note], data: { 
-                controller: "video-notes",
                 action: "submit->video-notes#captureTimestamp"
               } do |f| %>
                 <%= f.hidden_field :timestamp, data: { video_notes_target: "timestampInput" } %>

@@ -1,6 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Connects to data-controller="video-notes"
 export default class extends Controller {
   static targets = ["player", "timestampInput", "currentTime"]
   
@@ -21,6 +20,7 @@ export default class extends Controller {
   }
   
   captureTimestamp(event) {
+    console.log(this.hasPlayerTarget, this.hasTimestampInputTarget)
     if (this.hasPlayerTarget && this.hasTimestampInputTarget) {
       const currentTime = Math.floor(this.player.currentTime)
       this.timestampInputTarget.value = currentTime
