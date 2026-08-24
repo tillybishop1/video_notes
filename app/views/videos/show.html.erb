@@ -36,7 +36,7 @@
       <div class="notes-panel">
         <div class="d-flex justify-content-between align-items-center mb-3">
           <h4 class="mb-0">My Notes</h4>
-          <span class="badge bg-secondary"><%= @notes.count %></span>
+          <span id="notes-count" class="badge bg-secondary"><%= @notes.count %></span>
         </div>
 
         <%# New Note Form %>
@@ -71,12 +71,11 @@
         <%# Notes List %>
         <%= turbo_frame_tag "notes_list" do %>
           <div class="notes-section">
-            <% if @notes.any? %>
-              <div id="notes">
-                <%= render @notes %>
-              </div>
-            <% else %>
-              <div class="text-center py-5 text-muted">
+            <div id="notes">
+              <%= render @notes %>
+            </div>
+            <% if @notes.empty? %>
+              <div id="empty-notes" class="text-center py-5 text-muted">
                 <i class="bi bi-journal-text" style="font-size: 2rem;"></i>
                 <p class="mt-2 mb-0">No notes yet</p>
                 <small>Add your first note while watching the video</small>
